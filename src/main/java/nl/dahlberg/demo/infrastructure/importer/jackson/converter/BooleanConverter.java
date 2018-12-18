@@ -1,4 +1,4 @@
-package nl.dahlberg.demo.importer.converter;
+package nl.dahlberg.demo.infrastructure.importer.jackson.converter;
 
 import com.fasterxml.jackson.databind.util.StdConverter;
 

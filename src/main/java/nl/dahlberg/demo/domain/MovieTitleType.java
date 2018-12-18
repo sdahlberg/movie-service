@@ -1,12 +1,11 @@
-package nl.dahlberg.demo.importer.resource;
+package nl.dahlberg.demo.domain;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum TitleType {
+public enum MovieTitleType {
     MOVIE("movie"),
     SHORT("short"),
     TV_EPISODE("tvEpisode"),
@@ -18,6 +17,5 @@ public enum TitleType {
     VIDEO("video"),
     VIDEO_GAME("videoGame");
 
-    @JsonValue
     private final String value;
 }
