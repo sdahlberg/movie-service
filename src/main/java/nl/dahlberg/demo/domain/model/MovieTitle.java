@@ -1,7 +1,5 @@
-package nl.dahlberg.demo.domain;
+package nl.dahlberg.demo.domain.model;
 
-import lombok.Builder;
-import lombok.Getter;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;
 
-@Builder
-@Getter
+@lombok.Builder
+@lombok.Getter
+@lombok.NoArgsConstructor
+@lombok.AllArgsConstructor
 @Entity
 public class MovieTitle {
     @Id

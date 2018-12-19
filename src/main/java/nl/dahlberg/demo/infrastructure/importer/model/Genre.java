@@ -1,4 +1,4 @@
-package nl.dahlberg.demo.infrastructure.importer.domain;
+package nl.dahlberg.demo.infrastructure.importer.model;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;

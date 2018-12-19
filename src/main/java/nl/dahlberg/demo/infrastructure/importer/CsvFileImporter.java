@@ -7,10 +7,10 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
-import nl.dahlberg.demo.domain.MovieTitle;
-import nl.dahlberg.demo.infrastructure.importer.domain.TitleBasics;
+import nl.dahlberg.demo.conversion.DomainConversionService;
+import nl.dahlberg.demo.domain.model.MovieTitle;
 import nl.dahlberg.demo.infrastructure.importer.jackson.converter.BooleanConverter;
-import org.springframework.core.convert.ConversionService;
+import nl.dahlberg.demo.infrastructure.importer.model.TitleBasics;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -18,14 +18,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @Component
 @RequiredArgsConstructor
 public class CsvFileImporter {
-
-    private final ConversionService conversionService;
-
+    private final DomainConversionService domainConversionService;
     private CsvMapper csvMapper;
 
     @PostConstruct
@@ -50,7 +46,6 @@ public class CsvFileImporter {
             titles.add(objectMappingIterator.nextValue());
         }
 
-        return titles.stream().map(titleBasics -> conversionService.convert(titleBasics, MovieTitle.class))
-                     .collect(toList());
+        return domainConversionService.convert(titles, MovieTitle.class);
     }
 }

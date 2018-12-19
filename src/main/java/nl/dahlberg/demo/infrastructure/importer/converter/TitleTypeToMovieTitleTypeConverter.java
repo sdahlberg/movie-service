@@ -1,8 +1,8 @@
 package nl.dahlberg.demo.infrastructure.importer.converter;
 
-import nl.dahlberg.demo.domain.MovieTitleType;
+import nl.dahlberg.demo.domain.model.MovieTitleType;
 import nl.dahlberg.demo.infrastructure.common.ConversionServiceAwareConverter;
-import nl.dahlberg.demo.infrastructure.importer.domain.TitleType;
+import nl.dahlberg.demo.infrastructure.importer.model.TitleType;
 import org.springframework.stereotype.Component;
 
 @Component

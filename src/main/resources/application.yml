@@ -1,0 +1,16 @@
+# H2
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+  # Datasource
+  datasource:
+    username: sa
+    password:
+    url: jdbc:h2:file:~/test
+    driver-class-name: org.h2.Driver
+
+server:
+  port: 8082
