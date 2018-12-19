@@ -32,6 +32,7 @@ public class MovieTitle {
     @Enumerated(EnumType.STRING)
     private MovieTitleType movieTitleType;
 
+    @Column(length = 512)
     private String primaryTitle;
 
     @Column(length = 512)
