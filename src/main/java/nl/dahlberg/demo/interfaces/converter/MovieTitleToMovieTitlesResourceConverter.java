@@ -8,16 +8,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MovieTitleToMovieTitlesResourceConverter
-  extends ConversionServiceAwareConverter<MovieTitle, MovieTitlesResource> {
+        extends ConversionServiceAwareConverter<MovieTitle, MovieTitlesResource> {
 
     @Override
     public MovieTitlesResource convert(final MovieTitle movieTitle) {
         return MovieTitlesResource.builder() //
-                                  .uuid(movieTitle.getUuid()) //
-                                  .tconst(movieTitle.getTconst()) //
-                                  .movieTitleType(getConversionService().convert(movieTitle.getMovieTitleType(),
-                                                                                 MovieTitleTypeResource.class))
-                                  .primaryTitle(movieTitle.getPrimaryTitle()) //
-                                  .build();
+                .uuid(movieTitle.getUuid()) //
+                .tconst(movieTitle.getTconst()) //
+                .movieTitleType(getDomainConversionService().convert(movieTitle.getMovieTitleType(), MovieTitleTypeResource.class))
+                .primaryTitle(movieTitle.getPrimaryTitle()) //
+                .build();
     }
 }

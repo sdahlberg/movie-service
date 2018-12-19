@@ -9,14 +9,18 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
 import nl.dahlberg.demo.conversion.DomainConversionService;
 import nl.dahlberg.demo.domain.model.MovieTitle;
+import nl.dahlberg.demo.domain.repository.MovieTitleRepository;
 import nl.dahlberg.demo.infrastructure.importer.jackson.converter.BooleanConverter;
 import nl.dahlberg.demo.infrastructure.importer.model.TitleBasics;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @Component
 @RequiredArgsConstructor
@@ -33,19 +37,20 @@ public class CsvFileImporter {
         csvMapper.registerModules(module, new JavaTimeModule());
     }
 
-    public List<MovieTitle> importCsvStream(final InputStream inputStream) throws IOException {
+    public Stream<MovieTitle> importCsvStream(final InputStream inputStream) throws IOException {
         final CsvSchema schema =
-          csvMapper.typedSchemaFor(TitleBasics.class).withHeader().withArrayElementSeparator(",").withoutQuoteChar()
-                   .withNullValue("\\N").withColumnSeparator('\t');
+                csvMapper.typedSchemaFor(TitleBasics.class)
+                        .withHeader()
+                        .withArrayElementSeparator(",")
+                        .withoutQuoteChar()
+                        .withNullValue("\\N")
+                        .withColumnSeparator('\t');
 
-        final MappingIterator<TitleBasics> objectMappingIterator =
-          csvMapper.readerFor(TitleBasics.class).with(schema).readValues(inputStream);
+        final MappingIterator<TitleBasics> titleBasicsIterator =
+                csvMapper.readerFor(TitleBasics.class).with(schema).readValues(inputStream);
 
-        final List<TitleBasics> titles = new ArrayList<>();
-        while (objectMappingIterator.hasNextValue()) {
-            titles.add(objectMappingIterator.nextValue());
-        }
-
-        return domainConversionService.convert(titles, MovieTitle.class);
+        return StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(titleBasicsIterator, Spliterator.ORDERED), false)
+                .map(titleBasics -> domainConversionService.convert(titleBasics, MovieTitle.class));
     }
 }

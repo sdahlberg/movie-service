@@ -6,8 +6,9 @@ import nl.dahlberg.demo.domain.service.MovieTitleService;
 import nl.dahlberg.demo.infrastructure.importer.CsvFileImporter;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
+
 import java.io.IOException;
-import java.util.List;
+import java.util.stream.Stream;
 
 @Component
 @AllArgsConstructor
@@ -19,14 +20,8 @@ public class DatabaseFiller {
         final ClassPathResource resource = new ClassPathResource("imports/title-basics.tsv");
 
         try {
-            final long startRead = System.currentTimeMillis();
-            final List<MovieTitle> movieTitles = csvFileImporter.importCsvStream(resource.getInputStream());
-            final long startSave = System.currentTimeMillis();
-            System.out.println("Reading movie titles in: " + (startSave - startRead) + "ms.");
-            for (MovieTitle movieTitle : movieTitles) {
-                movieTitleService.addMovieTitle(movieTitle);
-            }
-            System.out.println("Writing movie titles in: " + (System.currentTimeMillis() - startSave) + "ms.");
+            final Stream<MovieTitle> movieTitleStream = csvFileImporter.importCsvStream(resource.getInputStream());
+            movieTitleService.addMovieTitles(movieTitleStream);
         } catch (IOException e) {
             throw new IllegalStateException("Should be able to read title-basics.tsv", e);
         }
