@@ -19,10 +19,11 @@ public class MovieTitleService {
         long[] now = {System.currentTimeMillis()};
         movieTitleRepository.saveAllBatched(movieTitleStream
                 .peek(movieTitle -> {
-                    if (counter[0]++ % 10000 == 0) {
+                    if (counter[0] % 1000 == 0 && counter[0] > 0) {
                         System.out.println("Save " + counter[0] + " in " + (System.currentTimeMillis() - now[0]) + "ms");
                         now[0] = System.currentTimeMillis();
                     }
+                    counter[0]++;
                 })
                 ::iterator);
     }
