@@ -12,20 +12,29 @@ spring:
 
   # Datasource
   datasource:
-    username: sa
-    password:
-    url: jdbc:h2:file:~/move-demo;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
-    driver-class-name: org.h2.Driver
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/movie-demo
+    username: postgres
+    password: admin
+  #    username: sa
+  #    password:
+  #    url: jdbc:h2:file:~/move-demo;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+  #    driver-class-name: org.h2.Driver
 
   jpa:
-    show-sql: false
+    show-sql: true
     hibernate:
       ddl-auto: update
-#    hibernate:
-#      jdbc:
-#        batch_size: 100
-#      order_inserts: true
-#      order_updates: true
+      jdbc:
+        batch_size: 500
+        order_inserts: true
+        order_updates: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            # see https://github.com/pgjdbc/pgjdbc/issues/1102
+            non_contextual_creation: true
 
 server:
   port: 8082

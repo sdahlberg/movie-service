@@ -19,11 +19,14 @@ public class DatabaseFiller {
     public void fillDatabase() {
         final ClassPathResource resource = new ClassPathResource("imports/title-basics.tsv");
 
+        final long start = System.currentTimeMillis();
         try {
             final Stream<MovieTitle> movieTitleStream = csvFileImporter.importCsvStream(resource.getInputStream());
             movieTitleService.addMovieTitles(movieTitleStream);
         } catch (IOException e) {
             throw new IllegalStateException("Should be able to read title-basics.tsv", e);
         }
+
+        System.out.println("Import finished in " + (System.currentTimeMillis() - start) + "ms.");
     }
 }

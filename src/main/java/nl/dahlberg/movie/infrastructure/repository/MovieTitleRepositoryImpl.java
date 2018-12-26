@@ -22,7 +22,7 @@ public class MovieTitleRepositoryImpl implements MovieTitleRepositoryCustom {
             entityManager.persist(movieTitle);
             i++;
 
-            if (i % 100 == 0) {
+            if (i % 500 == 0) {
                 entityManager.flush();
                 entityManager.clear();
             }
