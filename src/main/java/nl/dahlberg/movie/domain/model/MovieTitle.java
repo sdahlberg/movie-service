@@ -1,6 +1,9 @@
 package nl.dahlberg.movie.domain.model;
 
 import nl.dahlberg.movie.infrastructure.repository.jpa.converter.YearAttributeConverter;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -50,7 +53,10 @@ public class MovieTitle {
 
     private int runtimeMinutes;
 
+    @BatchSize(size = 20)
+    @Fetch(FetchMode.SELECT)
     @ElementCollection
+    @Enumerated(EnumType.STRING)
     private List<MovieGenre> genres;
 
     public static MovieTitle.MovieTitleBuilder create() {
