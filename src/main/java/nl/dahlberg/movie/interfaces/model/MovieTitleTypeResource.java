@@ -20,4 +20,13 @@ public enum MovieTitleTypeResource {
 
     @JsonValue
     private final String value;
+
+    public static MovieTitleTypeResource findByValue(final String value) {
+        for (MovieTitleTypeResource movieTitleTypeResource : MovieTitleTypeResource.values()) {
+            if (value.equals(movieTitleTypeResource.value)) {
+                return movieTitleTypeResource;
+            }
+        }
+        throw new IllegalArgumentException("Not a valid value: " + value);
+    }
 }

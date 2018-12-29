@@ -2,12 +2,18 @@ package nl.dahlberg.movie.domain.service;
 
 import lombok.AllArgsConstructor;
 import nl.dahlberg.movie.domain.model.MovieTitle;
+import nl.dahlberg.movie.domain.model.MovieTitleFilterCriteria;
+import nl.dahlberg.movie.domain.model.MovieTitleType;
 import nl.dahlberg.movie.domain.repository.MovieTitleRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Stream;
+
+import static nl.dahlberg.movie.domain.model.MovieTitleSearchSpecifications.hasMovieTitleTypes;
+import static org.springframework.data.jpa.domain.Specification.where;
 
 @Service
 @AllArgsConstructor
@@ -30,5 +36,16 @@ public class MovieTitleService {
 
     public Page<MovieTitle> getMovieTitles(final Pageable pageable) {
         return movieTitleRepository.findAll(pageable);
+    }
+
+    public Page<MovieTitle> search(final MovieTitleFilterCriteria filterCriteria, final Pageable pageable) {
+        return movieTitleRepository.findAll(
+                where(hasMovieTitleTypes(filterCriteria.getMovieTitleTypes())),
+                pageable
+        );
+    }
+
+    public List<MovieTitleType> getMovieTitleTypes() {
+        return movieTitleRepository.findMovieTitleTypes();
     }
 }
