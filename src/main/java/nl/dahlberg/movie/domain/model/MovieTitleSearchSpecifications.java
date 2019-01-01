@@ -1,12 +1,18 @@
 package nl.dahlberg.movie.domain.model;
 
-import nl.dahlberg.movie.SearchSpecifications;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
 
+import static nl.dahlberg.movie.SearchSpecifications.in;
+import static nl.dahlberg.movie.SearchSpecifications.manyIn;
+
 public class MovieTitleSearchSpecifications {
     public static Specification<MovieTitle> hasMovieTitleTypes(final List<MovieTitleType> movieTitleTypes) {
-        return SearchSpecifications.in(movieTitleTypes, "movieTitleType");
+        return in(movieTitleTypes, "movieTitleType");
+    }
+
+    public static Specification<MovieTitle> hasMovieTitleGenres(final List<MovieTitleGenre> movieTitleGenres) {
+        return manyIn(movieTitleGenres, "genres");
     }
 }

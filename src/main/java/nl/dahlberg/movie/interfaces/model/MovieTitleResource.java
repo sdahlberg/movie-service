@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Builder
 @Data
-public class MovieTitlesResource {
+public class MovieTitleResource {
     private UUID uuid;
     private String tconst;
     private MovieTitleTypeResource movieTitleType;
@@ -19,5 +19,5 @@ public class MovieTitlesResource {
     private Year startYear;
     private Year endYear;
     private int runtimeMinutes;
-    private List<MovieTitleGenresResource> genres;
+    private List<MovieTitleGenreResource> genres;
 }

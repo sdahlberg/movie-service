@@ -1,11 +1,12 @@
-package nl.dahlberg.movie.domain.model;
+package nl.dahlberg.movie.interfaces.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum MovieGenre {
+public enum MovieTitleGenreResource {
     ACTION("Action"),
     ADULT("Adult"),
     ADVENTURE("Adventure"),
@@ -35,6 +36,15 @@ public enum MovieGenre {
     WAR("War"),
     WESTERN("Western");
 
+    @JsonValue
     private final String value;
 
+    public static MovieTitleGenreResource findByValue(final String value) {
+        for (MovieTitleGenreResource movieTitleGenreResource : MovieTitleGenreResource.values()) {
+            if (value.equals(movieTitleGenreResource.value)) {
+                return movieTitleGenreResource;
+            }
+        }
+        throw new IllegalArgumentException("Not a valid value: " + value);
+    }
 }

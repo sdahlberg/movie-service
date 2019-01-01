@@ -1,12 +1,11 @@
-package nl.dahlberg.movie.interfaces.model;
+package nl.dahlberg.movie.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum MovieTitleGenresResource {
+public enum MovieTitleGenre {
     ACTION("Action"),
     ADULT("Adult"),
     ADVENTURE("Adventure"),
@@ -36,6 +35,6 @@ public enum MovieTitleGenresResource {
     WAR("War"),
     WESTERN("Western");
 
-    @JsonValue
     private final String value;
+
 }

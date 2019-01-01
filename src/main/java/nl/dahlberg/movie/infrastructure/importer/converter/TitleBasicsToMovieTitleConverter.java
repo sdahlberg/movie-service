@@ -1,6 +1,6 @@
 package nl.dahlberg.movie.infrastructure.importer.converter;
 
-import nl.dahlberg.movie.domain.model.MovieGenre;
+import nl.dahlberg.movie.domain.model.MovieTitleGenre;
 import nl.dahlberg.movie.domain.model.MovieTitle;
 import nl.dahlberg.movie.domain.model.MovieTitleType;
 import nl.dahlberg.movie.infrastructure.common.ConversionServiceAwareConverter;
@@ -22,7 +22,7 @@ public class TitleBasicsToMovieTitleConverter extends ConversionServiceAwareConv
                 .endYear(titleBasics.getEndYear())
                 .isAdult(titleBasics.getIsAdult())
                 .runtimeMinutes(titleBasics.getRuntimeMinutes())
-                .genres(getDomainConversionService().convert(titleBasics.getGenres(), MovieGenre.class))
+                .genres(getDomainConversionService().convert(titleBasics.getGenres(), MovieTitleGenre.class))
                 .build();
     }
 }

@@ -10,4 +10,5 @@ import java.util.List;
 @Getter
 public class MovieTitleFilterCriteria {
     private List<MovieTitleType> movieTitleTypes = Collections.emptyList();
+    private List<MovieTitleGenre> movieTitleGenres = Collections.emptyList();
 }

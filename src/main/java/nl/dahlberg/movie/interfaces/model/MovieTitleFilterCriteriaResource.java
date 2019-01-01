@@ -10,4 +10,5 @@ import java.util.List;
 @NoArgsConstructor
 public class MovieTitleFilterCriteriaResource {
     private List<MovieTitleTypeResource> movieTitleTypes = Collections.emptyList();
+    private List<MovieTitleGenreResource> movieTitleGenres = Collections.emptyList();
 }

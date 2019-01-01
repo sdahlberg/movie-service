@@ -6,9 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MovieTitleTypeToMovieTitleTypeResourceConverter
-        implements Converter<MovieTitleType, MovieTitleTypeResource> {
-
+public class MovieTitleTypeToMovieTitleTypeResourceConverter implements Converter<MovieTitleType, MovieTitleTypeResource> {
     @Override
     public MovieTitleTypeResource convert(MovieTitleType movieTitleType) {
         return MovieTitleTypeResource.valueOf(movieTitleType.name());
