@@ -17,7 +17,8 @@ public class DatabaseFiller {
     private final CsvFileImporter csvFileImporter;
 
     public void fillDatabase() {
-        final ClassPathResource resource = new ClassPathResource("imports/title-basics.tsv");
+        //final ClassPathResource resource = new ClassPathResource("imports/title-basics.tsv");
+        final ClassPathResource resource = new ClassPathResource("imports/test.tsv");
 
         final long start = System.currentTimeMillis();
         try {
