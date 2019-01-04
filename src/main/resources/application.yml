@@ -10,12 +10,6 @@ spring:
       enabled: true
       path: /h2
 
-  # Datasource
-  datasource:
-    platform: postgres
-    url: jdbc:postgresql://localhost:5432/movie-demo
-    username: postgres
-    password: admin
   #    username: sa
   #    password:
   #    url: jdbc:h2:file:~/move-demo;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
@@ -38,3 +32,31 @@ spring:
 
 server:
   port: 8082
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        web: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+---
+spring:
+  profiles: local
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/movie-demo
+    username: postgres
+    password: admin
+---
+spring:
+  profiles: container
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://db:5432/movie-demo
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
