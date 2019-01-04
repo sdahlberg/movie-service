@@ -11,6 +11,7 @@ Some choices:
 - clear separation of concerns; global converters - annotation on fields shouldn't tell how to (de)serialize to json/database
 
 (possible) TODOs:
+- mavenize docker build & run
 - performance of SortingAndPagingRepository using the Page return type sucks due to additional count query. Possible fixes:
   - find out whether JPA's L2 cache mechanism can help?
   - endless search so no grand total needs to be fetched
