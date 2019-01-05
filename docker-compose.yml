@@ -11,12 +11,8 @@ services:
     build: .
     ports:
     - "80:8082"
-    - "5432:5432"
     depends_on:
     - db
     environment:
-    - DATABASE_HOST=db
-    - DATABASE_NAME=movie-demo
-    - DATABASE_PORT=5432
     - DATABASE_USER=postgres
     - DATABASE_PASSWORD=admin

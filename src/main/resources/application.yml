@@ -1,14 +1,15 @@
-# H2
 spring:
   application:
     name: movie-demo
   data:
     rest:
       base-path: api
-  h2:
-    console:
-      enabled: true
-      path: /h2
+
+  # enable when ready for component testing
+  #  h2:
+  #    console:
+  #      enabled: true
+  #      path: /h2
 
   #    username: sa
   #    password:
