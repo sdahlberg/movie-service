@@ -1,6 +1,6 @@
 # movie-demo
 
-My playground spring boot app. I use data from IMDb's datasets (https://www.imdb.com/interfaces/). Currently only importing the main movie table with 5 million records.
+My playground spring boot app. I use data from IMDb's datasets (https://www.imdb.com/interfaces/). Currently only supporting the main movie title table.
 
 ## Build & run
 
