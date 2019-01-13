@@ -2,15 +2,17 @@
 
 My playground spring boot app. I use data from IMDb's datasets (https://www.imdb.com/interfaces/). Currently only importing the main movie table with 5 million records.
 
-## Build
+## Build & run
 
+### Preliminary
 When using docker toolbox make sure the docker-machine has enough memory (default of 2GB is not enough):
 
 ```
 docker-machine create -d virtualbox --virtualbox-cpu-count=2 --virtualbox-memory=4096 \n
   --virtualbox-disk-size=50000 default
 ```
-
+### Build and run services
+To build and start the postgres and movie-service images:
 `docker-compose up --build`
 
 Some choices:
