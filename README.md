@@ -13,7 +13,9 @@ docker-machine create -d virtualbox --virtualbox-cpu-count=2 --virtualbox-memory
 ```
 ### Build and run services
 To build and start the postgres and movie-service images:
-`docker-compose up --build`
+```
+docker-compose up --build
+```
 
 Some choices:
 - spring boot - try to go with spring boot's default choices and most simple setup as much as possible without too much performance trade-offs
