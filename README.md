@@ -12,9 +12,29 @@ docker-machine create -d virtualbox --virtualbox-cpu-count=2 --virtualbox-memory
   --virtualbox-disk-size=50000 default
 ```
 ### Build and run services
-To build and start the postgres and movie-service images:
+Build the app and docker image:
+```
+mvn package docker:build
+```
+building docker image can also be done directly:
+```
+docker-compose build
+```
+or
+```
+mvn docker:build
+```
+Start containers:
+```
+docker-compose up
+```
+or build docker image and start containers:
 ```
 docker-compose up --build
+```
+Currently NOT working:
+```
+mvn docker:start
 ```
 
 Some choices:
