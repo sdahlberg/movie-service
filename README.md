@@ -2,6 +2,13 @@
 
 My playground spring boot app. I use data from IMDb's datasets (https://www.imdb.com/interfaces/). Currently only importing the main movie table with 5 million records.
 
+## Build
+
+When using docker toolbox make sure the docker-machine has enough memory (default of 2GB is not enough):
+`docker-machine create -d virtualbox --virtualbox-cpu-count=2 --virtualbox-memory=4096 --virtualbox-disk-size=50000 default`
+
+`docker-compose build up`
+
 Some choices:
 - spring boot - try to go with spring boot's default choices and most simple setup as much as possible without too much performance trade-offs
 - spring data specifications for data filtering   
