@@ -83,40 +83,13 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.28.0</version>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.10</version>
                 <configuration>
-                    <images>
-                        <image>
-                            <alias>movie-service</alias>
-                            <name>sanderdahlberg/movie-service</name>
-
-                            <external>
-                                <type>compose</type>
-                                <basedir>${project.basedir}</basedir>
-                                <composeFile>docker-compose.yml</composeFile>
-                            </external>
-                            <!--<build>-->
-                            <!--<dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>-->
-                            <!--<assembly>-->
-                            <!--<mode>dir</mode>-->
-                            <!--<targetDir>/app</targetDir>-->
-                            <!--<descriptor>${project.basedir}/src/main/docker/assembly2.xml</descriptor>-->
-                            <!--</assembly>-->
-                            <!--</build>-->
-                        </image>
-                    </images>
+                    <repository>sanderdahlberg/movie-service</repository>
+                    <tag>latest</tag>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>build</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
