@@ -1,6 +1,7 @@
 package nl.dahlberg.movie.conversion;
 
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterRegistry;
@@ -12,9 +13,11 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Service
-@AllArgsConstructor
 public class DomainConversionService {
-    private final ConversionService conversionService;
+
+    @Autowired
+    @Qualifier("mvcConversionService")
+    private ConversionService conversionService;
 
     public <T, U> List<T> convert(final List<U> list, final Class<T> type) {
         return list.stream().map(content -> conversionService.convert(content, type)).collect(toList());

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import lombok.RequiredArgsConstructor;
-import nl.dahlberg.movie.configuration.CsvMapperProvider;
+import nl.dahlberg.movie.infrastructure.importer.configuration.CsvMapperProvider;
 import nl.dahlberg.movie.conversion.DomainConversionService;
 import nl.dahlberg.movie.domain.model.MovieTitle;
 import nl.dahlberg.movie.infrastructure.importer.model.TitleBasics;

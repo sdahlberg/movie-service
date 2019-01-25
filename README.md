@@ -1,4 +1,4 @@
-# movie-demo
+# movie-service
 
 My playground spring boot app. I use data from IMDb's datasets (https://www.imdb.com/interfaces/). Currently only supporting the main movie title table.
 
