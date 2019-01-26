@@ -1,7 +1,10 @@
 package nl.dahlberg.movie.infrastructure.messaging.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public enum MovieTitleTypeMessage {
     MOVIE("movie"),
@@ -15,5 +18,6 @@ public enum MovieTitleTypeMessage {
     VIDEO("video"),
     VIDEO_GAME("videoGame");
 
+    @JsonValue
     private final String value;
 }

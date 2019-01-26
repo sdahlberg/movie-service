@@ -17,6 +17,7 @@ import java.time.Year;
 import java.util.List;
 import java.util.UUID;
 
+@lombok.ToString
 @lombok.Builder
 @lombok.Getter
 @lombok.NoArgsConstructor

@@ -4,9 +4,10 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import lombok.RequiredArgsConstructor;
-import nl.dahlberg.movie.infrastructure.importer.configuration.CsvMapperProvider;
+import nl.dahlberg.movie.application.CsvImporter;
 import nl.dahlberg.movie.conversion.DomainConversionService;
 import nl.dahlberg.movie.domain.model.MovieTitle;
+import nl.dahlberg.movie.infrastructure.importer.configuration.CsvMapperProvider;
 import nl.dahlberg.movie.infrastructure.importer.model.TitleBasics;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +20,11 @@ import java.util.stream.StreamSupport;
 
 @Component
 @RequiredArgsConstructor
-public class CsvFileImporter {
+public class CsvFileImporter implements CsvImporter {
     private final DomainConversionService domainConversionService;
     private final CsvMapperProvider csvMapperProvider;
 
-    public Stream<MovieTitle> importCsvStream(final InputStream inputStream) throws IOException {
+    public Stream<MovieTitle> importMovieTitleInputStream(final InputStream inputStream) throws IOException {
         final CsvMapper csvMapper = csvMapperProvider.getCsvMapper();
         final CsvSchema schema =
                 csvMapper.typedSchemaFor(TitleBasics.class)

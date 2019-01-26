@@ -1,5 +1,6 @@
 package nl.dahlberg.movie.infrastructure.messaging.model;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -35,5 +36,6 @@ public enum MovieTitleGenreMessage {
     WAR("War"),
     WESTERN("Western");
 
+    @JsonValue
     private final String value;
 }

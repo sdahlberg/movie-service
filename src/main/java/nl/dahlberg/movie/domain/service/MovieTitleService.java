@@ -23,6 +23,10 @@ import static org.springframework.data.jpa.domain.Specification.where;
 public class MovieTitleService {
     private final MovieTitleRepository movieTitleRepository;
 
+    public MovieTitle addMovieTitle(final MovieTitle movieTitle) {
+        return movieTitleRepository.save(movieTitle);
+    }
+
     public void addMovieTitles(final Stream<MovieTitle> movieTitleStream) {
         int[] counter = {0};
         long[] now = {System.currentTimeMillis()};
