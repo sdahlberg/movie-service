@@ -8,7 +8,7 @@ My playground spring boot app. I use data from IMDb's datasets (https://www.imdb
 When using docker toolbox make sure the docker-machine has enough memory (default of 2GB is not enough):
 
 ```
-docker-machine create -d virtualbox --virtualbox-cpu-count=2 --virtualbox-memory=4096 \n
+docker-machine create -d virtualbox --virtualbox-cpu-count=2 --virtualbox-memory=4096 \
   --virtualbox-disk-size=50000 default
 ```
 ### Build and run services
