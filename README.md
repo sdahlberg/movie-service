@@ -9,7 +9,7 @@ When using docker toolbox make sure the docker-machine has enough memory (defaul
 
 ```
 docker-machine create -d virtualbox --virtualbox-cpu-count=2 --virtualbox-memory=4096 \
-  --virtualbox-disk-size=50000 default
+  --virtualbox-disk-size=50000 --engine-opt dns=8.8.8.8 default
 ```
 ### Build and run services
 Build the app and docker image:
