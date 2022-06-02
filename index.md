@@ -8,6 +8,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
+
 ```markdown
 Syntax highlighted code block
 
@@ -35,3 +36,19 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+Random stukje java:
+```java
+    @Bean
+    @Override
+    protected KeycloakAuthenticationProcessingFilter keycloakAuthenticationProcessingFilter() throws Exception {
+        RequestMatcher requestMatcher =
+                new OrRequestMatcher(
+                        new AntPathRequestMatcher("/sso/login"),
+                        new QueryParamPresenceRequestMatcher(OAuth2Constants.ACCESS_TOKEN),
+                        // We're providing our own authorization header matcher
+                        new IgnoreKeycloakProcessingFilterRequestMatcher()
+                );
+        return new KeycloakAuthenticationProcessingFilter(authenticationManagerBean(), requestMatcher);
+    }
+```
